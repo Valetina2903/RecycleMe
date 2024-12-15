@@ -543,6 +543,22 @@ footer {
         }, 100);
     }
 </script>
+<script>
+    function fetchProductInfo(productName) {
+        fetch(`/product_info/${productName}`)
+            .then(response => response.json())
+            .then(data => {
+                // Display data on the page
+                document.getElementById("product-name").innerText = data[0].name;
+                document.getElementById("material").innerText = data[0].material;
+                document.getElementById("recyclability").innerText = data[0].recyclability;
+            })
+            .catch(error => console.log('Error fetching product info:', error));
+    }
+
+    // Call function with a product name
+    fetchProductInfo('Product A');
+</script>
 </body>
 </html>
 
